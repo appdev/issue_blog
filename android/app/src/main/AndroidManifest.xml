@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="cn.bingoogolapple.bga_issue_blog">
+    package="cn.bingoogolapple.issue_blog">
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
@@ -10,7 +10,7 @@
          FlutterApplication and put your custom class here. -->
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="bga_issue_blog"
+        android:label="issue_blog"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

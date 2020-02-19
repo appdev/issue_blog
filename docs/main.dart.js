@@ -27440,7 +27440,7 @@ o=A.aK(m,m,new S.cj((S.cH(l)&4294967295)>>>0),m,m,m,m,m,m,m,m,m,m,m,m,m,!0,m,m,m
 n=P.m
 n=new N.eF(C.bm,18,C.bp,P.q(n,D.ci),P.b4(n),m,m,P.q(n,P.bT))
 n.b9=new D.YW(a)
-return E.RO(T.fI(H.d([new T.Gm(new U.cz(m,new D.YX(),m,[K.mi]),m),k,new T.b2(m,30,m,m),u,new T.b2(m,10,m,m),t,new T.b2(m,30,m,m),s,new T.b2(m,5,m,m),q,new T.b2(m,20,m,m),p,new T.b2(m,10,m,m),L.a8s(Q.c7(H.d([Q.c7(m,n,A.aK(m,m,new S.cj((S.cH(l)&4294967295)>>>0),m,C.dq,m,m,m,m,m,m,m,m,m,m,m,!0,m,m,m,m,m,m),"bga_issue_blog")],r),m,o,"\u4e3b\u9898 - "),C.bF),new T.b2(m,50,m,m)],[j]),C.aY,C.aV))},
+return E.RO(T.fI(H.d([new T.Gm(new U.cz(m,new D.YX(),m,[K.mi]),m),k,new T.b2(m,30,m,m),u,new T.b2(m,10,m,m),t,new T.b2(m,30,m,m),s,new T.b2(m,5,m,m),q,new T.b2(m,20,m,m),p,new T.b2(m,10,m,m),L.a8s(Q.c7(H.d([Q.c7(m,n,A.aK(m,m,new S.cj((S.cH(l)&4294967295)>>>0),m,C.dq,m,m,m,m,m,m,m,m,m,m,m,!0,m,m,m,m,m,m),"issue_blog")],r),m,o,"\u4e3b\u9898 - "),C.bF),new T.b2(m,50,m,m)],[j]),C.aY,C.aV))},
 XA:function(a,b){var u=null
 return new T.b2(40,40,Z.a4r(C.az,!1,U.uU(a,C.jH,30,30),C.aT,C.mf,0,0,!0,u,u,4,u,u,0,u,0,u,u,u,new D.YS(this,b),C.bn,C.iT,u,u),u)},
 Fo:function(a,b){var u=null
@@ -27468,7 +27468,7 @@ $R:3}
 D.YV.prototype={
 $1:function(a){return this.a.XA(a,$.a3F.i(0,a))}}
 D.YW.prototype={
-$0:function(){B.rG(this.a,"https://github.com/bingoogolapple/bga_issue_blog")},
+$0:function(){B.rG(this.a,"https://github.com/bingoogolapple/issue_blog")},
 $S:0}
 D.YS.prototype={
 $0:function(){return B.rG(this.a.c,this.b)},
@@ -55202,7 +55202,7 @@ F.tl.prototype={
 al:function(){return new F.VV(C.m)}}
 F.VV.prototype={
 H:function(a){var u=null,t=H.d([T.iR(new F.VW(),K.jA),T.iR(new F.VX(),K.jn),T.iR(new F.VY(),K.mi),T.iR(new F.VZ(),K.fG),T.iR(new F.W_(),K.eS),T.iR(new F.W0(),K.l9),T.iR(new F.W1(),K.l7),T.iR(new F.W2(),K.ku)],[Y.RK]),s=X.a4M(u,u,u,C.lh,u)
-return new Y.vH(t,new S.vv(T.e5(C.bI,H.d([new E.rU(u),new V.vW(new F.W3(),u)],[N.P]),C.bE,u,u),"/","bga_issue_blog",s,!1,u),u)},
+return new Y.vH(t,new S.vv(T.e5(C.bI,H.d([new E.rU(u),new V.vW(new F.W3(),u)],[N.P]),C.bE,u,u),"/","issue_blog",s,!1,u),u)},
 $aU:function(){return[F.tl]}}
 F.VW.prototype={
 $1:function(a){var u={func:1,ret:-1}
