@@ -1,0 +1,54 @@
+name: issue_blog
+description: Flutter 抓取 GitHub 上的 Issues，结合 GitHub Pages 搭建个人博客站点，支持 GitHub 登录和评论
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^0.1.2
+
+  json_annotation: ^3.0.0 # https://pub.flutter-io.cn/packages/json_annotation
+
+  transparent_image: ^1.0.0 # https://pub.flutter-io.cn/packages/transparent_image
+
+  provider: ^3.1.0+1 # https://pub.flutter-io.cn/packages/provider
+
+  url_launcher: ^5.2.5 # https://pub.flutter-io.cn/packages/url_launcher
+
+  dio: ^3.0.3 # https://github.com/flutterchina/dio
+
+  flutter_html: ^0.11.0 # https://github.com/Sub6Resources/flutter_html
+  markdown: ^2.1.1 # https://github.com/dart-lang/markdown
+
+  flutter_markdown: ^0.3.3 # https://github.com/flutter/flutter_markdown
+
+  fluro: ^1.5.1 # https://pub.dev/packages/fluro
+
+dev_dependencies:
+  build_runner: ^1.7.2 # https://pub.flutter-io.cn/packages/build_runner
+  json_serializable: ^3.2.3 # 可以配置别名 alias genjson="flutter packages pub run build_runner build --delete-conflicting-outputs" https://pub.flutter-io.cn/packages/json_serializable
+  flutter_test:
+    sdk: flutter
+
+  shelf_static: ^0.2.8 # https://pub.flutter-io.cn/packages/shelf_static
+
+flutter:
+  uses-material-design: true
+  assets:
+    - images/favicon.ico
+    - images/no-data.png
+
+    - images/enter-icon.svg
+    - images/next-page-hover.png
+    - images/next-page-normal.png
+    - images/pre-page-hover.png
+    - images/pre-page-normal.png
+
+    - images/git.png
+    - images/github.png
+    - images/qq-group.png
