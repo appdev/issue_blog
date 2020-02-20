@@ -12,7 +12,8 @@ class Config {
   };
 
   //blog 名称
-  static const String BLOG = "LnegYue's Blog";
+  static String BLOG = gitHubUsername + "'s Blog";
+
   //GitHub home
   static const String github_home = "https://github.com/appdev";
 }
