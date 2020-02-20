@@ -66,17 +66,25 @@ class _BlogDetailPageState extends BaseState<BlogDetailPage> {
     if (_issue == null) {
       return Center(child: CircularProgressIndicator());
     }
-    List<Widget> commentWidgetList = [CommentWidget(comment: _issue)];
+    List<Widget> commentWidgetList = [Container()];
+    commentWidgetList.add(CommentWidget(comment: _issue));
     if (_comments != null && _comments.isNotEmpty) {
       for (Map comment in _comments) {
         commentWidgetList.add(CommentWidget(comment: comment));
       }
     }
-    return ListView.builder(
+    return ListView.separated(
+      padding: const EdgeInsets.fromLTRB(60, 0, 50, 20),
       itemBuilder: (context, position) {
         return commentWidgetList[position];
       },
       itemCount: commentWidgetList.length,
+      separatorBuilder: (context, index) {
+        return Divider(
+          color: Colors.white,
+          height: 25,
+        );
+      },
     );
   }
 }

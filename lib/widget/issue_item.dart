@@ -37,7 +37,8 @@ class IssueItem extends StatelessWidget {
   void junpToPostDetails(BuildContext context) {
     return UIUtil.isPhoneStyle(context)
         ? RouteUtil.routeToBlogDetail(context, issue['number'])
-        : streamBus.emit(BlogContentChangeEvent(false, issue['number']));
+        : streamBus.emit(BlogContentChangeEvent(
+            showList: false, number: issue['number'], postTitle: issue['title']));
   }
 
   Widget _buildTitle(BuildContext context) {

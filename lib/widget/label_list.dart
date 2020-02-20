@@ -47,7 +47,7 @@ class _LabelListState extends State<LabelList> {
         return EmptyWidget('没有分类');
       }
       return Padding(
-        padding: const EdgeInsets.fromLTRB(60, 10, 20, 5),
+        padding: const EdgeInsets.fromLTRB(60, 10, 20, 15),
         child: Container(
           width: (MediaQuery.of(context).size.width * 0.75),
           child: Wrap(

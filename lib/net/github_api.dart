@@ -8,7 +8,8 @@ abstract class GitHubApi {
   // 获取个人信息 https://api.github.com/users/bingoogolapple
   static Future<UserInfo> getUserInfo() {
     return NetworkManager.instance.dio
-        .get('users/${Config.gitHubUsername}')
+//        .get('users/${Config.gitHubUsername}')
+        .get('users/appdev')
         .then((Response response) => UserInfo.fromJson(response.data));
   }
 

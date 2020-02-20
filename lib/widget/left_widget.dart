@@ -80,27 +80,6 @@ class _LeftWidgetState extends State<LeftWidget> {
           SizedBox(height: 10),
           buildMenuItem('关于我', true),
           SizedBox(height: 30),
-//          Text.rich(
-//            TextSpan(
-//              text: Config.qqTitle,
-//              style: TextStyle(color: HexColor('#4b595f')),
-//              children: [
-//                TextSpan(text: Config.qqDesc, style: TextStyle(color: HexColor('#849aa4')))
-//              ],
-//            ),
-//            textAlign: TextAlign.center,
-//          ),
-//          SizedBox(height: 5),
-//          Image.asset(
-//            Config.qqQrImg,
-//            width: 80,
-//            height: 80,
-//            fit: BoxFit.cover,
-//          ),
-//          SizedBox(height: 20),
-//          Text(Config.webSiteInfo,
-//              textAlign: TextAlign.center, style: TextStyle(color: HexColor('#898989'))),
-//          SizedBox(height: 10),
           Text.rich(
             TextSpan(
               text: '主题 - ',

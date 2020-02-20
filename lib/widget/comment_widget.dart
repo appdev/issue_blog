@@ -10,25 +10,31 @@ class CommentWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: UIUtil.isPhoneStyle(context)
-          ? Card(
-              elevation: 8,
-              margin: EdgeInsets.all(8),
-              child: buildPostContent(),
-            )
-          : buildPostContent(),
-    );
+    return UIUtil.isPhoneStyle(context)
+        ? Card(
+            elevation: 8,
+            margin: EdgeInsets.all(8),
+            child: buildPostContent(),
+          )
+        : Container(
+            padding: EdgeInsets.all(1.5),
+            child: buildPostContent(),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              border: Border.all(color: Color.fromARGB(255, 238, 238, 238), width: 1),
+              borderRadius: BorderRadius.circular(8),
+            ),
+          );
   }
 
-  Column buildPostContent() {
+  Widget buildPostContent() {
     return Column(
       children: [
         Container(
           child: ListTile(
             leading: ClipOval(
                 child: FadeInImage.memoryNetwork(
-                    width: 50,
+                    width: 40,
                     placeholder: kTransparentImage,
                     image: comment['user']['avatar_url'])),
             title: Text(comment['user']['login']),

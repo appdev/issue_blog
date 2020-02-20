@@ -56,8 +56,9 @@ class _BlogAppState extends State<BlogApp> {
         debugShowCheckedModeBanner: false,
         title: Config.gitHubUsername + "'s Blog",
         theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
+            primarySwatch: Colors.blue,
+            scaffoldBackgroundColor: Colors.white,
+            backgroundColor: Colors.white),
         // Flutter 默认支持横屏和竖屏，可以通过 SystemChrome.setPreferredOrientations 设置支持的屏幕方向，不能再 main 方法中设置
         // SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
         // 获取屏幕方向-方式一 OrientationBuilder 感知屏幕旋转

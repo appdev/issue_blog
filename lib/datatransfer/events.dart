@@ -26,11 +26,12 @@ class PageChangedEvent {
 class BlogContentChangeEvent {
   bool showList;
   int number;
+  String postTitle;
 
-  BlogContentChangeEvent(this.showList, this.number);
+  BlogContentChangeEvent({this.showList, this.number, this.postTitle = ""});
 
   @override
   String toString() {
-    return 'BlogContentChangeEvent{showList: $showList, number: $number}';
+    return 'BlogContentChangeEvent{showList: $showList, number: $number, postTitle: $postTitle}';
   }
 }
