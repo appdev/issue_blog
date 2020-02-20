@@ -26,7 +26,7 @@ class IssueItem extends StatelessWidget {
               .toString()
               .substring(0, "yyyy-MM-dd HH:mm".length)),
         ),
-        onTap: () => junpToPostDetails(context),
+        onTap: () => jumpToPostDetails(context),
       ),
       decoration: BoxDecoration(
         border: Border(bottom: BorderSide(color: Color(0xFFeeeeee))),
@@ -34,7 +34,7 @@ class IssueItem extends StatelessWidget {
     );
   }
 
-  void junpToPostDetails(BuildContext context) {
+  void jumpToPostDetails(BuildContext context) {
     return UIUtil.isPhoneStyle(context)
         ? RouteUtil.routeToBlogDetail(context, issue['number'])
         : streamBus.emit(BlogContentChangeEvent(
@@ -59,8 +59,8 @@ class IssueItem extends StatelessWidget {
           flex: 0,
           child: Padding(
             padding: const EdgeInsets.fromLTRB(60, 0, 40, 0),
-            child: InkWell(
-              onTap: () => junpToPostDetails(context),
+            child: GestureDetector(
+              onTap: () => jumpToPostDetails(context),
 //              toolbarOptions: ToolbarOptions(copy: true, selectAll: true),
               child: Text(
                 issue['title'],

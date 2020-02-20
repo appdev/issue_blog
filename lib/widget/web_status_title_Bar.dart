@@ -53,7 +53,17 @@ class _WebTitleState extends BaseState<WebTitleStatus> {
                         "时间",
                         style: TextStyle(color: HexColor("#a3b4bc"), fontSize: 12),
                       )
-                    : InkWell()
+                    : InkWell(
+                        child: Row(
+                          children: <Widget>[
+                            Icon(Icons.keyboard_backspace, color: HexColor("#4b595f")),
+                            Text("返回", style: TextStyle(color: HexColor("#4b595f"), fontSize: 14))
+                          ],
+                        ),
+                        onTap: () => streamBus.emit(BlogContentChangeEvent(
+                          showList: true,
+                        )),
+                      )
               ],
             ),
           )
