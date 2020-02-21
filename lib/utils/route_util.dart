@@ -2,6 +2,7 @@ import 'package:fluro/fluro.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:issue_blog/page/blog_detail_page.dart';
+import 'package:issue_blog/page/web_home_mirages_page.dart';
 import 'package:issue_blog/utils/url_util.dart';
 
 abstract class RouteUtil {
@@ -11,6 +12,9 @@ abstract class RouteUtil {
   static init() {
     _router.define('/blog/:number', handler: Handler(handlerFunc: (context, params) {
       return BlogDetailPage(number: int.parse(params['number'][0]));
+    }), transitionType: TransitionType.cupertino);
+    _router.define('/', handler: Handler(handlerFunc: (context, params) {
+      return WebHomeMiragesPage();
     }), transitionType: TransitionType.cupertino);
 
     final String urlHash = getUrlHash();
@@ -33,6 +37,13 @@ abstract class RouteUtil {
     _router.navigateTo(context, '/blog/$number');
   }
 
+  static routeToBlogIndex(context) {
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(builder: (BuildContext context) => WebHomeMiragesPage()),
+      (Route<dynamic> route) => false,
+    );
+  }
 //  static pushWithSwipeBackTransition(BuildContext context, Widget page) {
 //    // 使用 CupertinoPageRoute 支持滑动返回
 //    Navigator.of(context).push(CupertinoPageRoute(builder: (context) {

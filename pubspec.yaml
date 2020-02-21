@@ -4,7 +4,7 @@ description: Flutter 抓取 GitHub 上的 Issues，结合 GitHub Pages 搭建个
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.2.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -40,7 +40,7 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/images/favicon.ico
+    - assets/images/favicon.png
     - assets/images/no-data.png
 
     - assets/images/enter-icon.svg

@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:issue_blog/datatransfer/data_model.dart';
-import 'package:issue_blog/page/phone_home_page.dart';
-import 'package:issue_blog/page/web_home_page.dart';
+import 'package:issue_blog/page/web_home_mirages_page.dart';
 import 'package:issue_blog/utils/config.dart';
 import 'package:issue_blog/utils/platform_util.dart';
 import 'package:issue_blog/utils/route_util.dart';
-import 'package:issue_blog/utils/ui_util.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -58,7 +56,9 @@ class _BlogAppState extends State<BlogApp> {
         theme: ThemeData(
             primarySwatch: Colors.blue,
             scaffoldBackgroundColor: Colors.white,
-            backgroundColor: Colors.white),
+            backgroundColor: Colors.white,
+            fontFamily:
+                "Mirages Custom','Merriweather','Open Sans','PingFang SC','Hiragino Sans GB','Microsoft Yahei','WenQuanYi Micro Hei','Segoe UI Emoji','Segoe UI Symbol',Helvetica,Arial,sans-serif"),
         // Flutter 默认支持横屏和竖屏，可以通过 SystemChrome.setPreferredOrientations 设置支持的屏幕方向，不能再 main 方法中设置
         // SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
         // 获取屏幕方向-方式一 OrientationBuilder 感知屏幕旋转
@@ -67,12 +67,12 @@ class _BlogAppState extends State<BlogApp> {
           AdaptiveWebInitHashWidget(),
           OrientationBuilder(
             builder: (context, orientation) {
-//              return WebHomeMiragesPage();
-              if (UIUtil.isPhoneStyle(context)) {
-                return PhoneHomePage();
-              } else {
-                return WebHomePage();
-              }
+              return WebHomeMiragesPage();
+//              if (UIUtil.isPhoneStyle(context)) {
+//                return PhoneHomePage();
+//              } else {
+//                return WebHomePage();
+//              }
             },
           )
         ]),

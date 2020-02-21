@@ -16,4 +16,6 @@ class Config {
 
   //GitHub home
   static const String github_home = "https://github.com/appdev";
+  //自己博客的url
+  static const String web_url = "https://apkdv.com";
 }

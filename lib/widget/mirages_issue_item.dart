@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:issue_blog/dto/label.dart';
 import 'package:issue_blog/utils/route_util.dart';
 import 'package:issue_blog/utils/ui_util.dart';
 
@@ -32,9 +31,13 @@ class MiragesIssueItem extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               _buildTitle(context),
-              Text(DateTime.tryParse(issue['created_at'])
-                  .toString()
-                  .substring(0, "yyyy-MM-dd HH:mm".length))
+              Text(
+                DateTime.tryParse(issue['created_at'])
+                    .toString()
+                    .substring(0, "yyyy-MM-dd HH:mm".length),
+                style: TextStyle(
+                    color: Colors.white, fontSize: UIUtil.getIssueItemWidth(context)[4].toDouble()),
+              )
             ],
           ),
           decoration: BoxDecoration(
@@ -47,7 +50,6 @@ class MiragesIssueItem extends StatelessWidget {
   }
 
   Widget _buildTitle(BuildContext context) {
-    var label = Label.fromJsonList(issue['labels']);
     return GestureDetector(
       onTap: () => RouteUtil.routeToBlogDetail(context, issue['number']),
 //              toolbarOptions: ToolbarOptions(copy: true, selectAll: true),

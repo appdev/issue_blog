@@ -54,12 +54,17 @@ class _BlogDetailPageState extends BaseState<BlogDetailPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return WillPopScope(
+        child: Scaffold(
 //        appBar: AppBar(
 //          elevation: 0,
 //          title: Text(_issue == null ? '博客详情' : _issue['title']),
 //        ),
-        body: buildBodyWidget);
+            body: buildBodyWidget),
+        onWillPop: () {
+          Navigator.pop(context);
+          return new Future.value(false);
+        });
   }
 
   Widget get buildBodyWidget {
