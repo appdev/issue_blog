@@ -40,15 +40,15 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - images/favicon.ico
-    - images/no-data.png
+    - assets/images/favicon.ico
+    - assets/images/no-data.png
 
-    - images/enter-icon.svg
-    - images/next-page-hover.png
-    - images/next-page-normal.png
-    - images/pre-page-hover.png
-    - images/pre-page-normal.png
+    - assets/images/enter-icon.svg
+    - assets/images/next-page-hover.png
+    - assets/images/next-page-normal.png
+    - assets/images/pre-page-hover.png
+    - assets/images/pre-page-normal.png
 
-    - images/git.png
-    - images/github.png
-    - images/qq-group.png
+    - assets/images/git.png
+    - assets/images/github.png
+    - assets/images/qq-group.png

@@ -67,6 +67,7 @@ class _BlogAppState extends State<BlogApp> {
           AdaptiveWebInitHashWidget(),
           OrientationBuilder(
             builder: (context, orientation) {
+//              return WebHomeMiragesPage();
               if (UIUtil.isPhoneStyle(context)) {
                 return PhoneHomePage();
               } else {

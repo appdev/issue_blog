@@ -41,7 +41,7 @@ class _PageWidgetState extends BaseState<PageWidget> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         IconButton(
-          icon: Image.asset('images/pre-page-hover.png'),
+          icon: Image.asset('assets/images/pre-page-hover.png'),
           onPressed: () {
             int page = int.tryParse(_pageController.text);
             if (page == null || page <= 1) {
@@ -91,7 +91,7 @@ class _PageWidgetState extends BaseState<PageWidget> {
         ),
         SizedBox(width: 10),
         IconButton(
-          icon: Image.asset('images/next-page-hover.png'),
+          icon: Image.asset('assets/images/next-page-hover.png'),
           onPressed: () {
             int page = int.tryParse(_pageController.text);
             if (page == null || page < 0) {

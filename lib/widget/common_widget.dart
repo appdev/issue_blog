@@ -21,7 +21,7 @@ class EmptyWidget extends StatelessWidget {
           SizedBox(height: 20),
           Align(
             alignment: Alignment.center,
-            child: Image.asset('images/no-data.png'),
+            child: Image.asset('assets/images/no-data.png'),
           ),
           Align(
             alignment: Alignment.center,
