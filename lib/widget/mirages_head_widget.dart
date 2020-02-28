@@ -4,7 +4,6 @@ import 'package:issue_blog/net/github_api.dart';
 import 'package:issue_blog/utils/config.dart';
 import 'package:issue_blog/utils/route_util.dart';
 import 'package:issue_blog/utils/ui_util.dart';
-import 'package:issue_blog/widget/common_widget.dart';
 import 'package:provider/provider.dart';
 
 class MiragesHead extends StatefulWidget {
@@ -29,9 +28,7 @@ class _MiragesHeadState extends State<MiragesHead> {
       return;
     }
     GitHubApi.getLabelList().then((labelList) {
-      var label = labelList;
-//      label.addAll(labelList);
-      labelListModel.labelList = label;
+      labelListModel.labelList = labelList;
     }).catchError((error) {
       print('获取标签列表失败 $error');
       Scaffold.of(context).showSnackBar(new SnackBar(content: new Text('获取标签列表失败')));
@@ -40,15 +37,7 @@ class _MiragesHeadState extends State<MiragesHead> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<LabelListModel>(builder: (context, labelListModel, _) {
-      if (labelListModel.labelList == null) {
-        return LoadingWidget();
-      }
-//      if (labelListModel.labelList.isEmpty) {
-//        return EmptyWidget('没有分类');
-//      }
-      return _buildHeadBar(context);
-    });
+    return _buildHeadBar(context);
   }
 
   Container _buildHeadBar(BuildContext context) {
@@ -86,7 +75,13 @@ class _MiragesHeadState extends State<MiragesHead> {
                     ),
                   ),
                   _buildClickText(() => {}, "友链"),
-                  _buildClickText(() => {}, "关于")
+                  _buildClickText(() => {}, "关于"),
+                  Consumer<LabelListModel>(builder: (context, labelListModel, _) {
+                    if (labelListModel.labelList != null) {
+                      return _buildClickText(() => {}, "关于");
+                    } else
+                      return _buildClickText(() => {}, "关于");
+                  })
                 ],
               ),
             ),

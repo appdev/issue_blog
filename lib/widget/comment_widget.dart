@@ -17,6 +17,7 @@ class CommentWidget extends StatelessWidget {
             child: buildPostContent(),
           )
         : Container(
+            width: UIUtil.getWidth(context) > 700 ? 600 : UIUtil.getWidth(context) - 40,
             padding: EdgeInsets.all(1.5),
             child: buildPostContent(),
             decoration: BoxDecoration(

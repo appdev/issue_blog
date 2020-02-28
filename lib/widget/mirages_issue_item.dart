@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:issue_blog/dto/label.dart';
 import 'package:issue_blog/utils/route_util.dart';
 import 'package:issue_blog/utils/ui_util.dart';
 
@@ -12,14 +13,23 @@ class MiragesIssueItem extends StatelessWidget {
   //700 padding 16 height 168
   //1600 padding 20 832* 248
   //1700 padding 20 860* 279
-  static var url = "https://static.apkdv.com/blog_cover/message-in-a-bottle-3437294_1920.jpg";
 
   @override
   Widget build(BuildContext context) {
+    var label = (issue['labels']).toString().isNotEmpty
+        ? ("・" +
+            Label.fromJsonList(issue['labels'])
+                .map((e) => e.name)
+                .toList()
+                .toString()
+                .replaceAll("[", "")
+                .replaceAll("]", ""))
+        : "";
+
     return Padding(
       padding: EdgeInsets.all(UIUtil.getIssueItemWidth(context)[0].toDouble()),
       child: InkWell(
-        onTap: () => RouteUtil.routeToBlogDetail(context, issue['number']),
+        onTap: () => RouteUtil.routeToBlogMiragesDetail(context, issue),
         child: Container(
           padding: EdgeInsets.all(16),
           alignment: Alignment.center,
@@ -33,15 +43,16 @@ class MiragesIssueItem extends StatelessWidget {
               _buildTitle(context),
               Text(
                 DateTime.tryParse(issue['created_at'])
-                    .toString()
-                    .substring(0, "yyyy-MM-dd HH:mm".length),
+                        .toString()
+                        .substring(0, "yyyy年MM月dd日".length) +
+                    label,
                 style: TextStyle(
                     color: Colors.white, fontSize: UIUtil.getIssueItemWidth(context)[4].toDouble()),
               )
             ],
           ),
           decoration: BoxDecoration(
-            image: DecorationImage(image: NetworkImage(url), fit: BoxFit.cover),
+            image: DecorationImage(image: NetworkImage(issue["html_url"]), fit: BoxFit.cover),
             borderRadius: BorderRadius.circular(8),
           ),
         ),
@@ -51,7 +62,7 @@ class MiragesIssueItem extends StatelessWidget {
 
   Widget _buildTitle(BuildContext context) {
     return GestureDetector(
-      onTap: () => RouteUtil.routeToBlogDetail(context, issue['number']),
+      onTap: () => RouteUtil.routeToBlogMiragesDetail(context, issue),
 //              toolbarOptions: ToolbarOptions(copy: true, selectAll: true),
       child: Text(
         issue['title'],

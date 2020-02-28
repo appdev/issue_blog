@@ -1,5 +1,5 @@
-import 'dart:js' as js;
 import 'dart:html' as html;
+import 'dart:js' as js;
 
 launchURL(context, url) async {
   // 当前页面打开

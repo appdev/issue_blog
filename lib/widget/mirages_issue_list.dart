@@ -5,6 +5,9 @@ import 'package:issue_blog/datatransfer/data_model.dart';
 import 'package:issue_blog/datatransfer/events.dart';
 import 'package:issue_blog/net/github_api.dart';
 import 'package:issue_blog/utils/base_state.dart';
+import 'package:issue_blog/utils/constant_util.dart';
+import 'package:issue_blog/utils/hex_color.dart';
+import 'package:issue_blog/utils/ui_util.dart';
 import 'package:issue_blog/widget/common_widget.dart';
 import 'package:issue_blog/widget/mirages_issue_item.dart';
 import 'package:provider/provider.dart';
@@ -17,9 +20,8 @@ class MiragesIssueList extends StatefulWidget {
 }
 
 class _IssueListState extends BaseState<MiragesIssueList> {
-  ScrollController _scrollController = new ScrollController();
   bool _isLoadingMore = false;
-
+  bool _hasMore = true;
   PageModel _pageModel;
   int _page = 1;
 
@@ -33,7 +35,6 @@ class _IssueListState extends BaseState<MiragesIssueList> {
   @override
   void initState() {
     super.initState();
-
     addSubscription(streamBus.on<PageChangedEvent>().listen((event) {
       if (_page == event.page) {
         return;
@@ -56,14 +57,6 @@ class _IssueListState extends BaseState<MiragesIssueList> {
       _fetchIssueList();
     }));
 
-    _scrollController.addListener(() {
-      if (_scrollController.position.pixels != _scrollController.position.maxScrollExtent ||
-          _isLoadingMore) {
-        return;
-      }
-      _loadMore();
-    });
-
     WidgetsBinding.instance.addPostFrameCallback((_) {
       // 恢复 label 数据
       _currentLabelModel = Provider.of<CurrentLabelModel>(context, listen: false);
@@ -85,14 +78,9 @@ class _IssueListState extends BaseState<MiragesIssueList> {
     });
   }
 
-  @override
-  void dispose() {
-    _scrollController.dispose();
-    super.dispose();
-  }
-
-  void _loadMore() {
-    _isLoadingMore = true;
+  void _nextPage() {
+    //单页模式。不需要加载更多
+    _isLoadingMore = false;
     setState(() {});
     // 加载更多更新页码
     _page++;
@@ -100,15 +88,46 @@ class _IssueListState extends BaseState<MiragesIssueList> {
     _fetchIssueList();
   }
 
+  void _upPage() {
+    //单页模式。不需要加载更多
+    _isLoadingMore = false;
+    setState(() {});
+    // 加载更多更新页码
+    if (_page == 1) {
+      _pullToRefresh();
+    } else {
+      _page--;
+      _fetchIssueList();
+    }
+    _pageModel.page = _page;
+  }
+
   Future<Null> _fetchIssueList() {
-    return GitHubApi.getIssueList(_currentLabelModel.currentLabel, _keyword, _page, 20)
+    return GitHubApi.getIssueList(_currentLabelModel.currentLabel, _keyword, _page, 10)
         .then((data) {
-      if (_isLoadingMore) {
-        _issueListModel.addMoreIssueList(data);
-      } else {
-        _issueListModel.issueList = data;
+      //向data中插入图片
+//      if (data != null) {
+//        data = data.map((e) => e["html_url"] = Constant.getTitlePic()).toList();
+//      }
+//      if (_isLoadingMore) {
+//        _issueListModel.addMoreIssueList(data);
+//      } else {
+//        _issueListModel.issueList = data;
+//      }
+      _issueListModel.issueList = data;
+      //判断还有没有更多数据
+      _hasMore = _issueListModel.issueList.length >= 10;
+      //对已经保存的数据进行整理
+      if (_issueListModel.issueList != null && _issueListModel.issueList.isNotEmpty) {
+        _issueListModel.issueList.forEach((element) {
+          if (element["html_url"] == null || element["html_url"] == "") {}
+          element["html_url"] = Constant.getTitlePic();
+        });
       }
     }).catchError((error) {
+      if (_page != 1) {
+        _page--;
+      }
       print('获取博客列表失败 $error');
       Scaffold.of(context).showSnackBar(new SnackBar(content: new Text('获取博客列表失败')));
     }).whenComplete(() {
@@ -133,7 +152,9 @@ class _IssueListState extends BaseState<MiragesIssueList> {
         issueList.clear();
         issueList.addAll(issueListModel.issueList.map((e) => MiragesIssueItem(issue: e)));
       }
-      return Column(children: issueList);
+      return Column(
+        children: <Widget>[Column(children: issueList), _buildNextBtn()],
+      );
     });
   }
 
@@ -154,5 +175,55 @@ class _IssueListState extends BaseState<MiragesIssueList> {
     _page = 1;
     _pageModel.page = _page;
     return await _fetchIssueList();
+  }
+
+  Widget _buildNextBtn() {
+    return Container(
+      width: UIUtil.getIssueItemWidth(context)[1] == 0
+          ? UIUtil.getWidth(context)
+          : UIUtil.getIssueItemWidth(context)[1].toDouble(),
+      padding: EdgeInsets.only(bottom: 20),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Offstage(
+            offstage: _page == 1,
+            child: SizedBox(
+              width: 134,
+              height: 41,
+              child: FlatButton(
+                  onPressed: _upPage,
+                  child: Text("上一页"),
+                  shape: RoundedRectangleBorder(
+                      side: BorderSide(
+                        color: HexColor("#333333"),
+                        width: 1,
+                      ),
+                      borderRadius: BorderRadius.circular(20))),
+            ),
+          ),
+          Expanded(
+            child: SizedBox.shrink(),
+          ),
+          Offstage(
+            offstage: !_hasMore,
+            child: SizedBox(
+              width: 134,
+              height: 41,
+              child: FlatButton(
+                  onPressed: _nextPage,
+                  child: Text("下一页"),
+                  shape: RoundedRectangleBorder(
+                      side: BorderSide(
+                        color: HexColor("#333333"),
+                        width: 1,
+                      ),
+                      borderRadius: BorderRadius.circular(20))),
+            ),
+          )
+        ],
+      ),
+    );
   }
 }

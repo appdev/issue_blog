@@ -44,13 +44,26 @@ class _BlogAppState extends State<BlogApp> {
         ChangeNotifierProvider(builder: (_) => LabelListModel()),
         ChangeNotifierProvider(builder: (_) => IssueListModel()),
         ChangeNotifierProvider(builder: (_) => AboutMeModel()),
+        ChangeNotifierProvider(builder: (_) => HitokotoModel()),
       ],
       // 跳转到其他页面后如果不想展示返回按钮，可以把 MaterialApp 再作为他页面的根 Widget
       child: MaterialApp(
         initialRoute: '/',
-//        routes: {
-//          '/blog':(context) => BlogDetailPage(),
-//        },
+        onGenerateRoute: (RouteSettings settings) {
+          // 统一处理
+          final String name = settings.name;
+          final Function pageContentBuilder = RouteUtil.routes[name];
+//          if (pageContentBuilder != null) {
+          final Route route = MaterialPageRoute(
+            builder: (context) {
+              //将RouteSettings中的arguments参数取出来，通过构造函数传入
+              return pageContentBuilder(context, arguments: settings.arguments);
+            },
+            settings: settings,
+          );
+          return route;
+//          }
+        },
         debugShowCheckedModeBanner: false,
         title: Config.gitHubUsername + "'s Blog",
         theme: ThemeData(

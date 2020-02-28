@@ -52,4 +52,11 @@ abstract class GitHubApi {
         .get('https://raw.githubusercontent.com/${Config.repo}/master/README.md')
         .then((Response response) => response.data);
   }
+
+  // 获取一言的文字 https://v1.hitokoto.cn/?c=a&d&f&h&i&k?encode=text?charset=utf-8
+  static Future<String> getHitokoto() {
+    return NetworkManager.instance.dio
+        .get('https://v1.hitokoto.cn/?c=a&d&f&h&i&k?encode=text?charset=utf-8')
+        .then((Response response) => response.data["hitokoto"]);
+  }
 }

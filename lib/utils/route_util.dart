@@ -2,6 +2,7 @@ import 'package:fluro/fluro.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:issue_blog/page/blog_detail_page.dart';
+import 'package:issue_blog/page/web_blog_detail_mirages_page.dart';
 import 'package:issue_blog/page/web_home_mirages_page.dart';
 import 'package:issue_blog/utils/url_util.dart';
 
@@ -9,10 +10,21 @@ abstract class RouteUtil {
   static final _router = Router();
   static String _initHashRoute;
 
+// 定义路由信息
+  static final Map<String, Function> routes = {
+    '/post': (context, {issue}) => WebBlogDetailMiragesPage(issue: issue)
+  };
+
   static init() {
+    //blog details
     _router.define('/blog/:number', handler: Handler(handlerFunc: (context, params) {
       return BlogDetailPage(number: int.parse(params['number'][0]));
     }), transitionType: TransitionType.cupertino);
+    //blog Mirages details
+    _router.define('/post/:issue', handler: Handler(handlerFunc: (context, params) {
+      return WebBlogDetailMiragesPage(issue: params['issue'][0]);
+    }), transitionType: TransitionType.cupertino);
+
     _router.define('/', handler: Handler(handlerFunc: (context, params) {
       return WebHomeMiragesPage();
     }), transitionType: TransitionType.cupertino);
@@ -37,6 +49,17 @@ abstract class RouteUtil {
     _router.navigateTo(context, '/blog/$number');
   }
 
+  static routeToBlogMiragesDetail(context, issue) {
+//    Navigator.pushNamed(context, '/post', arguments: {"issue": issue});
+    Navigator.push(
+      context,
+      new MaterialPageRoute(
+        builder: (context) => new WebBlogDetailMiragesPage(issue: issue),
+      ),
+    );
+//    _router.navigateTo(context, '/post/$issue');
+  }
+
   static routeToBlogIndex(context) {
     Navigator.pushAndRemoveUntil(
       context,
@@ -44,6 +67,7 @@ abstract class RouteUtil {
       (Route<dynamic> route) => false,
     );
   }
+
 //  static pushWithSwipeBackTransition(BuildContext context, Widget page) {
 //    // 使用 CupertinoPageRoute 支持滑动返回
 //    Navigator.of(context).push(CupertinoPageRoute(builder: (context) {

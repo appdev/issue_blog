@@ -97,3 +97,14 @@ class AboutMeModel with ChangeNotifier {
     notifyListeners();
   }
 }
+
+class HitokotoModel with ChangeNotifier {
+  String _HitokotoData;
+
+  String get hitokotoData => _HitokotoData;
+
+  set hitokotoData(String data) {
+    _HitokotoData = data;
+    notifyListeners();
+  }
+}

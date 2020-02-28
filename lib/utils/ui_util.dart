@@ -15,6 +15,7 @@ abstract class UIUtil {
   }
 
   static var _map = new HashMap()
+    //高 宽 字体大小
     ..[700] = const [16, 0, 168, 25, 13]
     ..[1260] = const [20, 688, 248, 25, 13]
     ..[1600] = const [20, 832, 248, 25, 13]
