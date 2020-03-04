@@ -5,8 +5,8 @@ import 'package:issue_blog/net/github_api.dart';
 import 'package:issue_blog/utils/base_state.dart';
 import 'package:issue_blog/utils/date_util.dart';
 import 'package:issue_blog/utils/ui_util.dart';
-import 'package:issue_blog/widget/comment_widget.dart';
 import 'package:issue_blog/widget/mirages_blog_bar.dart';
+import 'package:issue_blog/widget/mirages_comment_widget.dart';
 import 'package:issue_blog/widget/mirages_foot_wodget.dart';
 import 'package:issue_blog/widget/mirages_post_title_widget.dart';
 
@@ -87,10 +87,10 @@ class _WebBlogDetailMiragesPageState extends BaseState<WebBlogDetailMiragesPage>
   }
 
   Container _buildListWidget() {
-    List<Widget> _commentWidget = [CommentWidget(comment: _issue)];
+    List<Widget> _commentWidget = [MiragesCommentWidget(comment: _issue)];
     if (_comments != null && _comments.isNotEmpty) {
       for (Map comment in _comments) {
-        _commentWidget.add(CommentWidget(comment: comment));
+        _commentWidget.add(MiragesCommentWidget(comment: comment));
       }
     }
 
@@ -102,19 +102,13 @@ class _WebBlogDetailMiragesPageState extends BaseState<WebBlogDetailMiragesPage>
 
     return Container(
       padding: EdgeInsets.fromLTRB(width, 25, width, 25),
-      child: ListView.separated(
+      child: ListView.builder(
         shrinkWrap: true,
         physics: NeverScrollableScrollPhysics(),
         itemBuilder: (context, position) {
           return _commentWidget[position];
         },
         itemCount: _commentWidget.length,
-        separatorBuilder: (context, index) {
-          return Divider(
-            color: Colors.white,
-            height: 25,
-          );
-        },
       ),
     );
   }

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:issue_blog/page/blog_detail_page.dart';
 import 'package:issue_blog/page/web_blog_detail_mirages_page.dart';
 import 'package:issue_blog/page/web_home_mirages_page.dart';
+import 'package:issue_blog/utils/string_utils.dart';
 import 'package:issue_blog/utils/url_util.dart';
 
 abstract class RouteUtil {
@@ -26,8 +27,9 @@ abstract class RouteUtil {
     }), transitionType: TransitionType.cupertino);
 
     _router.define('/:category', handler: Handler(handlerFunc: (context, params) {
-      return WebHomeMiragesPage(category: params['issue'][0]);
-    }), transitionType: TransitionType.cupertino);
+      return WebHomeMiragesPage(
+          category: StringUtil.isEmpty(params['category'][0]) ? "" : params['category'][0]);
+    }));
 
     final String urlHash = getUrlHash();
     if (urlHash == null || urlHash.isEmpty || urlHash == '/') {
@@ -58,6 +60,10 @@ abstract class RouteUtil {
       ),
     );
 //    _router.navigateTo(context, '/post/$issue');
+  }
+
+  static routeToIndex(context, category) {
+    _router.navigateTo(context, '/${StringUtil.isEmpty(category) ? "" : category}', replace: true);
   }
 
   static routeToBlogIndex(context, category) {

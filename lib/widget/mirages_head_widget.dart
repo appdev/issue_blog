@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:issue_blog/datatransfer/data_model.dart';
-import 'package:issue_blog/datatransfer/events.dart';
 import 'package:issue_blog/net/github_api.dart';
 import 'package:issue_blog/utils/config.dart';
 import 'package:issue_blog/utils/route_util.dart';
 import 'package:issue_blog/utils/ui_util.dart';
+import 'package:issue_blog/utils/url_util_web.dart';
 import 'package:issue_blog/widget/mirages_label_item.dart';
 import 'package:issue_blog/widget/pop_route.dart';
 import 'package:provider/provider.dart';
@@ -18,12 +18,10 @@ class MiragesHead extends StatefulWidget {
 
 class _MiragesHeadState extends State<MiragesHead> {
   GlobalKey popKey = GlobalKey();
-  CurrentLabelModel _currentLabelModel;
 
   @override
   void initState() {
     super.initState();
-    _currentLabelModel = Provider.of<CurrentLabelModel>(context, listen: false);
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _fetchLabelList();
@@ -71,7 +69,7 @@ class _MiragesHeadState extends State<MiragesHead> {
                   InkWell(
                     onTap: () {
                       //重置标签
-                      RouteUtil.routeToBlogIndex(context,null);
+                      RouteUtil.routeToIndex(context, null);
                     },
                     child: Padding(
                       padding: const EdgeInsets.fromLTRB(8, 8, 18, 8),
@@ -123,7 +121,24 @@ class _MiragesHeadState extends State<MiragesHead> {
             ),
             Expanded(
               flex: 1,
-              child: Container(),
+              child: Container(
+                alignment: Alignment.centerRight,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    FlatButton(
+                        onPressed: () {
+                          launchURL(context, Config.web_url);
+                        },
+                        padding: EdgeInsets.all(8),
+                        child: ImageIcon(
+                          AssetImage("assets/images/github.png"),
+                          color: Colors.black12,
+                        ),
+                        shape: CircleBorder())
+                  ],
+                ),
+              ),
             )
           ],
         ),
@@ -151,8 +166,9 @@ class _MiragesHeadState extends State<MiragesHead> {
               selected: label.name == currentLabelModel.currentLabel,
               onSelected: (selected) {
                 Navigator.pop(context);
-                currentLabelModel.currentLabel = selected ? label.name : null;
-                streamBus.emit(LabelChangedEvent(currentLabelModel.currentLabel));
+                RouteUtil.routeToIndex(context, label.name);
+                currentLabelModel.currentLabel = selected ? label.name : "";
+//                streamBus.emit(LabelChangedEvent(currentLabelModel.currentLabel));
               });
         });
       }).toList(),

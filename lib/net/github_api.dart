@@ -3,6 +3,7 @@ import 'package:issue_blog/dto/label.dart';
 import 'package:issue_blog/dto/user_info.dart';
 import 'package:issue_blog/net/network_manager.dart';
 import 'package:issue_blog/utils/config.dart';
+import 'package:issue_blog/utils/string_utils.dart';
 
 abstract class GitHubApi {
   // 获取个人信息 https://api.github.com/users/bingoogolapple
@@ -23,7 +24,8 @@ abstract class GitHubApi {
   // 分页获取 issue 列表 https://api.github.com/search/issues?q=+state:open+repo:bingoogolapple/bingoogolapple.github.io+label:%22Android%22&sort=created&order=desc&page=1&per_page=20
   static Future<dynamic> getIssueList(String label, String keyword, int currentPage, int pageSize) {
     String labelStr = '';
-    if (label != null && label.trim().length > 0) {
+    if (!StringUtil.isEmpty(label) && label != "/") {
+      print("Label" + label);
       labelStr = '+label:"$label"';
     }
     return NetworkManager.instance.dio

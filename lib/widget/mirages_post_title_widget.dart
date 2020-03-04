@@ -43,10 +43,10 @@ class _MiragesPostTitleState extends State<MiragesPostTitle> {
 
   @override
   Widget build(BuildContext context) {
-    print("userHitokoto: " + widget.userHitokoto.toString());
     return Container(
-      height: 376,
+      height: widget.userHitokoto ? 357 : 458,
       alignment: Alignment.center,
+      padding: EdgeInsets.only(top: UIUtil.getWidth(context) >= 1600 ? 81 : 72),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[

@@ -26,26 +26,23 @@ class MiragesIssueItem extends StatelessWidget {
                 .replaceAll("[", "")
                 .replaceAll("]", ""))
         : "";
-
+    var sizeList = UIUtil.getIssueItemWidth(context);
     return Padding(
-      padding: EdgeInsets.all(UIUtil.getIssueItemWidth(context)[0].toDouble()),
+      padding: EdgeInsets.all(sizeList[0].toDouble()),
       child: InkWell(
         onTap: () => RouteUtil.routeToBlogMiragesDetail(context, issue),
         child: Container(
           padding: EdgeInsets.all(16),
           alignment: Alignment.center,
-          width: UIUtil.getIssueItemWidth(context)[1] == 0
-              ? UIUtil.getWidth(context)
-              : UIUtil.getIssueItemWidth(context)[1].toDouble(),
-          height: UIUtil.getIssueItemWidth(context)[2].toDouble(),
+          width: sizeList[1] == 0 ? UIUtil.getWidth(context) : sizeList[1].toDouble(),
+          height: sizeList[2].toDouble(),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               _buildTitle(context),
               Text(
                 DateUtil.formatDateStr(issue['created_at'], format: DataFormats.zh_y_mo_d) + label,
-                style: TextStyle(
-                    color: Colors.white, fontSize: UIUtil.getIssueItemWidth(context)[4].toDouble()),
+                style: TextStyle(color: Colors.white, fontSize: sizeList[4].toDouble()),
               )
             ],
           ),

@@ -7,6 +7,7 @@ import 'package:issue_blog/net/github_api.dart';
 import 'package:issue_blog/utils/base_state.dart';
 import 'package:issue_blog/utils/constant_util.dart';
 import 'package:issue_blog/utils/hex_color.dart';
+import 'package:issue_blog/utils/string_utils.dart';
 import 'package:issue_blog/utils/ui_util.dart';
 import 'package:issue_blog/widget/common_widget.dart';
 import 'package:issue_blog/widget/mirages_issue_item.dart';
@@ -29,6 +30,8 @@ class _IssueListState extends BaseState<MiragesIssueList> {
 
   KeywordModel _keywordModel;
   String _keyword = '';
+
+  CurrentLabelModel _currentLabelModel;
 
   IssueListModel _issueListModel;
 
@@ -58,6 +61,9 @@ class _IssueListState extends BaseState<MiragesIssueList> {
     }));
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
+      // 恢复 label 数据
+      _currentLabelModel = Provider.of<CurrentLabelModel>(context, listen: false);
+
       // 恢复 keyword 数据
       _keywordModel = Provider.of<KeywordModel>(context, listen: false);
       _keyword = _keywordModel.keyword;
@@ -68,9 +74,9 @@ class _IssueListState extends BaseState<MiragesIssueList> {
 
       // 恢复 issueList
       _issueListModel = Provider.of<IssueListModel>(context, listen: false);
-      if (_issueListModel.issueList != null) {
-        return;
-      }
+//      if (_issueListModel.issueList != null && _currentLabelModel.currentLabel == widget.category) {
+//        return;
+//      }
       _fetchIssueList();
     });
   }
@@ -101,7 +107,7 @@ class _IssueListState extends BaseState<MiragesIssueList> {
 
   Future<Null> _fetchIssueList() {
     return GitHubApi.getIssueList(
-            widget.category == null ? "" : widget.category, _keyword, _page, 10)
+            StringUtil.isEmpty(widget.category) ? "" : widget.category, _keyword, _page, 10)
         .then((data) {
       //向data中插入图片
 //      if (data != null) {
