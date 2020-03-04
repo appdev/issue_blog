@@ -13,7 +13,9 @@ import 'package:issue_blog/widget/mirages_issue_item.dart';
 import 'package:provider/provider.dart';
 
 class MiragesIssueList extends StatefulWidget {
-  const MiragesIssueList({Key key}) : super(key: key);
+  MiragesIssueList(this.category);
+
+  final String category;
 
   @override
   _IssueListState createState() => _IssueListState();
@@ -27,8 +29,6 @@ class _IssueListState extends BaseState<MiragesIssueList> {
 
   KeywordModel _keywordModel;
   String _keyword = '';
-
-  CurrentLabelModel _currentLabelModel;
 
   IssueListModel _issueListModel;
 
@@ -58,9 +58,6 @@ class _IssueListState extends BaseState<MiragesIssueList> {
     }));
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      // 恢复 label 数据
-      _currentLabelModel = Provider.of<CurrentLabelModel>(context, listen: false);
-
       // 恢复 keyword 数据
       _keywordModel = Provider.of<KeywordModel>(context, listen: false);
       _keyword = _keywordModel.keyword;
@@ -103,7 +100,8 @@ class _IssueListState extends BaseState<MiragesIssueList> {
   }
 
   Future<Null> _fetchIssueList() {
-    return GitHubApi.getIssueList(_currentLabelModel.currentLabel, _keyword, _page, 10)
+    return GitHubApi.getIssueList(
+            widget.category == null ? "" : widget.category, _keyword, _page, 10)
         .then((data) {
       //向data中插入图片
 //      if (data != null) {

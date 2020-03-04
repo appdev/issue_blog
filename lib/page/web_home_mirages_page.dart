@@ -6,13 +6,17 @@ import 'package:issue_blog/widget/mirages_issue_list.dart';
 import 'package:issue_blog/widget/mirages_post_title_widget.dart';
 
 class WebHomeMiragesPage extends StatelessWidget {
+  final String category;
+
+  WebHomeMiragesPage({Key key, this.category});
+
   final List<Widget> content = List()
-    ..add(MiragesPostTitle(title: Config.BLOG, userHitokoto: true, titlePic: Config.BLOG_PIC))
-    ..add(MiragesIssueList())
-    ..add(MiragesFoot());
+    ..add(MiragesPostTitle(title: Config.BLOG, userHitokoto: true, titlePic: Config.BLOG_PIC));
 
   @override
   Widget build(BuildContext context) {
+    content.add(MiragesIssueList(category));
+    content.add(MiragesFoot());
     return Scaffold(
         backgroundColor: Colors.white,
         body: MiragesBlogBar.buildBlogBar(

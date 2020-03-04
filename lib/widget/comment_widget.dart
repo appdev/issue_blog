@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:issue_blog/utils/date_util.dart';
 import 'package:issue_blog/utils/ui_util.dart';
 import 'package:issue_blog/widget/markdown_widget.dart';
 import 'package:transparent_image/transparent_image.dart';
@@ -17,7 +18,6 @@ class CommentWidget extends StatelessWidget {
             child: buildPostContent(),
           )
         : Container(
-            width: UIUtil.getWidth(context) > 700 ? 600 : UIUtil.getWidth(context) - 40,
             padding: EdgeInsets.all(1.5),
             child: buildPostContent(),
             decoration: BoxDecoration(
@@ -39,9 +39,8 @@ class CommentWidget extends StatelessWidget {
                     placeholder: kTransparentImage,
                     image: comment['user']['avatar_url'])),
             title: Text(comment['user']['login']),
-            trailing: Text(DateTime.tryParse(comment['created_at'])
-                .toString()
-                .substring(0, "yyyy-MM-dd HH:mm".length)),
+            trailing:
+                Text(DateUtil.formatDateStr(comment['created_at'], format: DataFormats.zh_y_mo_d)),
           ),
           decoration: BoxDecoration(
             color: Color.fromARGB(255, 249, 250, 252),

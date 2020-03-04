@@ -25,8 +25,8 @@ abstract class RouteUtil {
       return WebBlogDetailMiragesPage(issue: params['issue'][0]);
     }), transitionType: TransitionType.cupertino);
 
-    _router.define('/', handler: Handler(handlerFunc: (context, params) {
-      return WebHomeMiragesPage();
+    _router.define('/:category', handler: Handler(handlerFunc: (context, params) {
+      return WebHomeMiragesPage(category: params['issue'][0]);
     }), transitionType: TransitionType.cupertino);
 
     final String urlHash = getUrlHash();
@@ -60,10 +60,13 @@ abstract class RouteUtil {
 //    _router.navigateTo(context, '/post/$issue');
   }
 
-  static routeToBlogIndex(context) {
+  static routeToBlogIndex(context, category) {
     Navigator.pushAndRemoveUntil(
       context,
-      MaterialPageRoute(builder: (BuildContext context) => WebHomeMiragesPage()),
+      MaterialPageRoute(
+          builder: (BuildContext context) => WebHomeMiragesPage(
+                category: category,
+              )),
       (Route<dynamic> route) => false,
     );
   }

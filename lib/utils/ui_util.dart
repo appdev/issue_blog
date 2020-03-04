@@ -25,6 +25,10 @@ abstract class UIUtil {
     return MediaQuery.of(context).size.width;
   }
 
+  static double getHeight(BuildContext context) {
+    return MediaQuery.of(context).size.height;
+  }
+
   static List<int> getIssueItemWidth(BuildContext context) {
     var width = getWidth(context);
     if (width <= 700) {

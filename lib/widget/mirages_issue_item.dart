@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:issue_blog/dto/label.dart';
+import 'package:issue_blog/utils/date_util.dart';
 import 'package:issue_blog/utils/route_util.dart';
 import 'package:issue_blog/utils/ui_util.dart';
 
@@ -42,10 +43,7 @@ class MiragesIssueItem extends StatelessWidget {
             children: <Widget>[
               _buildTitle(context),
               Text(
-                DateTime.tryParse(issue['created_at'])
-                        .toString()
-                        .substring(0, "yyyy年MM月dd日".length) +
-                    label,
+                DateUtil.formatDateStr(issue['created_at'], format: DataFormats.zh_y_mo_d) + label,
                 style: TextStyle(
                     color: Colors.white, fontSize: UIUtil.getIssueItemWidth(context)[4].toDouble()),
               )
