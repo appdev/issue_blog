@@ -22,13 +22,9 @@ Web - PC | Desktop |
 | ------------ | ------------ |
 | ![web-pc](https://user-images.githubusercontent.com/8949716/67616787-8de05d00-f80f-11e9-9ddf-e75c2f3d619d.png) | ![desktop](https://user-images.githubusercontent.com/8949716/67616799-a5b7e100-f80f-11e9-8079-2d9139fa9689.png) |
 
-| Web - Phone | Web - Phone | Web - Phone |
-| ------------ | ------------- | ------------- |
-| ![web-phone1](https://user-images.githubusercontent.com/8949716/67147761-6b5bba80-f2ca-11e9-9839-92225c06a3f9.jpeg) | ![web-phone2](https://user-images.githubusercontent.com/8949716/67147762-6f87d800-f2ca-11e9-9dcf-5ec8a32dab4a.jpeg) | ![web-phone3](https://user-images.githubusercontent.com/8949716/67147763-73b3f580-f2ca-11e9-8b52-e51cc10397c5.jpeg) |
-
 | Phone | Phone | Phone |
 | ------------ | ------------- | ------------- |
-| ![phone1](https://user-images.githubusercontent.com/8949716/67147776-a4942a80-f2ca-11e9-9b3f-6f768a978a8f.jpeg) | ![phone2](https://user-images.githubusercontent.com/8949716/67147777-a52cc100-f2ca-11e9-815b-0f342b912133.jpeg) | ![phone3](https://user-images.githubusercontent.com/8949716/67147778-a65dee00-f2ca-11e9-9cb4-7941f1838316.jpeg) |
+| ![web-phone1](https://user-images.githubusercontent.com/8949716/67147761-6b5bba80-f2ca-11e9-9839-92225c06a3f9.jpeg) | ![web-phone2](https://user-images.githubusercontent.com/8949716/67147762-6f87d800-f2ca-11e9-9dcf-5ec8a32dab4a.jpeg) | ![web-phone3](https://user-images.githubusercontent.com/8949716/67147763-73b3f580-f2ca-11e9-8b52-e51cc10397c5.jpeg) |
 
 ## 使用方法
 

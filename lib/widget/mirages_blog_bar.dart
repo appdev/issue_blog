@@ -10,15 +10,19 @@ class MiragesBlogBar {
       children: <Widget>[
         content,
         Container(
-          height: UIUtil.getWidth(context) >= 1600 ? 81 : 72,
+          margin: EdgeInsets.fromLTRB(UIUtil.getWidth(context) <= 700 ? 15 : 0,
+              UIUtil.getWidth(context) <= 700 ? 15 : 0, 0, 0),
+          height:
+              UIUtil.getWidth(context) >= 1600 ? 81 : (UIUtil.getWidth(context) <= 700 ? 35 : 72),
           child: ClipRRect(
+            borderRadius: BorderRadius.circular(UIUtil.getWidth(context) <= 700 ? 25 : 0),
             child: BackdropFilter(
               filter: ImageFilter.blur(
-                sigmaX: 20,
-                sigmaY: 20,
+                sigmaX: 50,
+                sigmaY: 50,
               ),
               child: Container(
-                color: Colors.white10,
+                color: UIUtil.getWidth(context) <= 700 ? Colors.black38 : Colors.white10,
                 child: MiragesHead(),
               ),
             ),

@@ -43,7 +43,23 @@ class _MiragesHeadState extends State<MiragesHead> {
 
   @override
   Widget build(BuildContext context) {
-    return _buildHeadBar(context);
+    return UIUtil.getWidth(context) <= 700 ? _buildHeadMenu() : _buildHeadBar(context);
+  }
+
+  Widget _buildHeadMenu() {
+    return ButtonTheme(
+      minWidth: 50,
+      buttonColor: Colors.white,
+      child: RaisedButton(
+        color: Colors.white,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(25))),
+        onPressed: null,
+        child: Text(
+          "MENU",
+          style: TextStyle(color: Colors.white, fontSize: 13),
+        ),
+      ),
+    );
   }
 
   Container _buildHeadBar(BuildContext context) {

@@ -16,29 +16,32 @@ class MiragesFoot extends StatelessWidget {
     return Container(
       height: 66,
       color: Color(0xFFfafafa),
+      padding: EdgeInsets.symmetric(horizontal: 8),
       alignment: Alignment.center,
       child: RichText(
+          textAlign: TextAlign.center,
           text: TextSpan(children: [
-        TextSpan(
-            text: "Copyright © 2020 ", style: TextStyle(fontSize: 13, color: HexColor("#333333"))),
-        TextSpan(
-            text: Config.BLOG,
-            style: TextStyle(fontSize: 13, color: HexColor("#1abc9c")),
-            recognizer: TapGestureRecognizer()
-              ..onTap = () {
-                launchURL(context, Config.web_url);
-              }),
-        TextSpan(
-            text: " • Powered by Github Page • Theme ",
-            style: TextStyle(fontSize: 13, color: HexColor("#333333"))),
-        TextSpan(
-            text: "Mirages",
-            style: TextStyle(fontSize: 13, color: HexColor("#1abc9c")),
-            recognizer: TapGestureRecognizer()
-              ..onTap = () {
-                launchURL(context, Config.github_home);
-              }),
-      ])),
+            TextSpan(
+                text: "Copyright © 2020 ",
+                style: TextStyle(fontSize: 13, color: HexColor("#333333"))),
+            TextSpan(
+                text: Config.BLOG,
+                style: TextStyle(fontSize: 13, color: HexColor("#1abc9c")),
+                recognizer: TapGestureRecognizer()
+                  ..onTap = () {
+                    launchURL(context, Config.web_url);
+                  }),
+            TextSpan(
+                text: " • Powered by Github Page • Theme ",
+                style: TextStyle(fontSize: 13, color: HexColor("#333333"))),
+            TextSpan(
+                text: "Mirages",
+                style: TextStyle(fontSize: 13, color: HexColor("#1abc9c")),
+                recognizer: TapGestureRecognizer()
+                  ..onTap = () {
+                    launchURL(context, Config.github_home);
+                  }),
+          ])),
     );
   }
 }

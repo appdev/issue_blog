@@ -44,7 +44,7 @@ class _MiragesPostTitleState extends State<MiragesPostTitle> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: widget.userHitokoto ? 357 : 458,
+      height: widget.userHitokoto ? 357 : UIUtil.getWidth(context) <= 700 ? 367 : 458,
       alignment: Alignment.center,
       padding: EdgeInsets.only(top: UIUtil.getWidth(context) >= 1600 ? 81 : 72),
       child: Column(
@@ -69,10 +69,14 @@ class _MiragesPostTitleState extends State<MiragesPostTitle> {
     });
   }
 
-  Text buildText(String str) {
-    return Text(
-      str,
-      style: TextStyle(color: Colors.white, fontSize: 15),
+  Padding buildText(String str) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8),
+      child: Text(
+        str,
+        textAlign: TextAlign.center,
+        style: TextStyle(color: Colors.white, fontSize: 15),
+      ),
     );
   }
 
