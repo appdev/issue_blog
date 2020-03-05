@@ -3,24 +3,12 @@
 
 
 
-## 目录
-* [使用方法](#使用方法)
-
-
-通过 Issues 记录学习笔记的优点：
-
-- [x] 在线编辑和预览，随时添加和提交（不用担心电脑坏了导致笔记丢失）
-- [x] 当笔记里到嵌套图片时，支持粘贴屏幕截图和拖拽添加图片
-- [x] 带有搜索和排序功能
-- [x] 可通过 Label 来对 Issues 进行分类
-- [x] 可以把每一个 Comment 作为一个小的知识点不停的追加到 Issue 里
-- [x] 结合 GitHub Pages 绑定域名来搭建个人博客站点
 
 ## 效果图
 
-Web - PC | Desktop |
+Web - 首页 | 内容页 |
 | ------------ | ------------ |
-| ![web-pc](https://user-images.githubusercontent.com/8949716/67616787-8de05d00-f80f-11e9-9ddf-e75c2f3d619d.png) | ![desktop](https://user-images.githubusercontent.com/8949716/67616799-a5b7e100-f80f-11e9-8079-2d9139fa9689.png) |
+| ![web-pc](Screenshot/2.png) | ![Screenshot/3.png) |
 
 | Phone | Phone | Phone |
 | ------------ | ------------- | ------------- |
@@ -64,18 +52,18 @@ class Config {
 > 1.打包
 
 ```
-dart build_web_preview.dart
+flutter build web
 ```
 > 2.发布
 
 ```
-拷贝「issue_blog/docs」目录里的所有文件到「GitHub Pages」的根目录下
+拷贝「./build/web」目录里的所有文件到「GitHub Pages」的根目录下
 并将「GitHub Pages」仓库 PUSH 到 GitHub 上
 ```
 
 #### 绑定域名到 GitHub Pages
 
-> 1.在「GitHub Pages」根目录下添加文件名为「CNAME」的文件，文件内容就是你的二级域名，例如我的是
+> 1.在「GitHub Pages」根目录下添加文件名为「CNAME」的文件，文件内容就是你的二级域名
 
 ```
 www.appdev.cn
@@ -96,7 +84,7 @@ www.appdev.cn
 
 ## License
 
-    Copyright 2016 bingoogolapple
+    Copyright 2016 appdev
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
