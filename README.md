@@ -8,13 +8,21 @@
 
 Web - 首页 | 内容页 |
 | ------------ | ------------ |
-| ![web-pc](Screenshot/2.png) | ![Screenshot/4.png) |
+| ![web-index](Screenshot/2.png) | ![web-content][Screenshot/4.png) |
 
 | Phone | Phone | Phone |
 | ------------ | ------------- | ------------- |
-| ![web-phone1](https://user-images.githubusercontent.com/8949716/67147761-6b5bba80-f2ca-11e9-9839-92225c06a3f9.jpeg) | ![web-phone2](https://user-images.githubusercontent.com/8949716/67147762-6f87d800-f2ca-11e9-9dcf-5ec8a32dab4a.jpeg) | ![web-phone3](https://user-images.githubusercontent.com/8949716/67147763-73b3f580-f2ca-11e9-8b52-e51cc10397c5.jpeg) |
+| ![web-phone1](Screenshot/1.png) | ![web-phone2](Screenshot/3.png) | ![web-phone3](Screenshot/5.png) |
 
 ## 使用方法
+
+#### 分类、评论
+
+使用issue label作为分类标签
+关于评论：
+因为flutter web 现在还不能使用社会化评论 所以目前评论功能缺失。
+考虑使用某个社会化评论接口来实现
+
 
 #### 本地运行
 
@@ -80,6 +88,9 @@ www.appdev.cn
 
 直接在gitHubUsername.github.io 仓库的issue中写文章
 
+### 存在的问题
+
+ flutter web 不能像普通网页一样复制！！！！ 目前还没有好的解决办法
 
 
 ## License
