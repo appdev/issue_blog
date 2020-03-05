@@ -8,7 +8,7 @@
 
 Web - 首页 | 内容页 |
 | ------------ | ------------ |
-| ![web-index](Screenshot/2.png) | ![web-content][Screenshot/4.png) |
+| ![web-index](Screenshot/2.png) | ![web-index](Screenshot/4.png) |
 
 | Phone | Phone | Phone |
 | ------------ | ------------- | ------------- |
