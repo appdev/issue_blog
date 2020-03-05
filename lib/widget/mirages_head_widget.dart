@@ -128,7 +128,7 @@ class _MiragesHeadState extends State<MiragesHead> {
                   children: <Widget>[
                     FlatButton(
                         onPressed: () {
-                          launchURL(context, Config.web_url);
+                          launchURL(context, "https://github.com/appdev/issue_blog");
                         },
                         padding: EdgeInsets.all(8),
                         child: ImageIcon(

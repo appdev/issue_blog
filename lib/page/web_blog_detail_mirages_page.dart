@@ -77,6 +77,9 @@ class _WebBlogDetailMiragesPageState extends BaseState<WebBlogDetailMiragesPage>
         userHitokoto: false,
         titlePic: _issue["html_url"]));
     content.add(_buildListWidget());
+    content.add(SizedBox(
+      height: 100,
+    ));
     content.add(MiragesFoot());
     return ListView.builder(
       itemBuilder: (BuildContext context, int index) {

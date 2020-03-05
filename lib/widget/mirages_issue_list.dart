@@ -31,8 +31,6 @@ class _IssueListState extends BaseState<MiragesIssueList> {
   KeywordModel _keywordModel;
   String _keyword = '';
 
-  CurrentLabelModel _currentLabelModel;
-
   IssueListModel _issueListModel;
 
   @override
@@ -62,7 +60,7 @@ class _IssueListState extends BaseState<MiragesIssueList> {
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       // 恢复 label 数据
-      _currentLabelModel = Provider.of<CurrentLabelModel>(context, listen: false);
+//      _currentLabelModel = Provider.of<CurrentLabelModel>(context, listen: false);
 
       // 恢复 keyword 数据
       _keywordModel = Provider.of<KeywordModel>(context, listen: false);
