@@ -64,11 +64,7 @@ class _MiragesHeadState extends State<MiragesHead> {
 
   Container _buildHeadBar(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(color: Colors.white.withAlpha(150), boxShadow: [
-        BoxShadow(
-            color: Color(0xFFf4f4f4).withAlpha(150),
-            offset: Offset(0, UIUtil.getWidth(context) >= 1600 ? 89 : 70))
-      ]),
+      decoration: BoxDecoration(color: Colors.white10),
       alignment: Alignment.center,
       padding: EdgeInsets.symmetric(horizontal: UIUtil.getWidth(context) >= 1600 ? 18 : 16),
       height: UIUtil.getWidth(context) >= 1600 ? 81 : 72,

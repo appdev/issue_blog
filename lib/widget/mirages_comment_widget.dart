@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:issue_blog/utils/config.dart';
 import 'package:issue_blog/utils/date_util.dart';
-import 'package:issue_blog/utils/ui_util.dart';
 import 'package:issue_blog/widget/markdown_widget.dart';
 import 'package:transparent_image/transparent_image.dart';
 
@@ -12,13 +11,7 @@ class MiragesCommentWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return UIUtil.isPhoneStyle(context)
-        ? Card(
-            elevation: 8,
-            margin: EdgeInsets.all(8),
-            child: showMenuByUser(),
-          )
-        : showMenuByUser();
+    return showMenuByUser();
   }
 
   Widget showMenuByUser() {

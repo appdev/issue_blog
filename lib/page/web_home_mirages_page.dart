@@ -4,6 +4,7 @@ import 'package:issue_blog/widget/mirages_blog_bar.dart';
 import 'package:issue_blog/widget/mirages_foot_wodget.dart';
 import 'package:issue_blog/widget/mirages_issue_list.dart';
 import 'package:issue_blog/widget/mirages_post_title_widget.dart';
+import 'package:issue_blog/widget/mriages_drawer.dart';
 
 class WebHomeMiragesPage extends StatelessWidget {
   final String category;
@@ -18,12 +19,14 @@ class WebHomeMiragesPage extends StatelessWidget {
     content.add(MiragesIssueList(category));
     content.add(MiragesFoot());
     return Scaffold(
-        backgroundColor: Colors.white,
-        body: MiragesBlogBar.buildBlogBar(
-            ListView.builder(
-              itemBuilder: (context, index) => content[index],
-              itemCount: content.length,
-            ),
-            context));
+      backgroundColor: Colors.white,
+      body: MiragesBlogBar.buildBlogBar(
+          ListView.builder(
+            itemBuilder: (context, index) => content[index],
+            itemCount: content.length,
+          ),
+          context),
+      drawer: MiragesDrawer(),
+    );
   }
 }

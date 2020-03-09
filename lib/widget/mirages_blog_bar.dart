@@ -18,8 +18,8 @@ class MiragesBlogBar {
             borderRadius: BorderRadius.circular(UIUtil.getWidth(context) <= 700 ? 25 : 0),
             child: BackdropFilter(
               filter: ImageFilter.blur(
-                sigmaX: 50,
-                sigmaY: 50,
+                sigmaX: 30,
+                sigmaY: 30,
               ),
               child: Container(
                 color: UIUtil.getWidth(context) <= 700 ? Colors.black38 : Colors.white10,

@@ -30,7 +30,7 @@ abstract class GitHubApi {
     }
     return NetworkManager.instance.dio
         .get(
-            'search/issues?q=$keyword+state:open+repo:${Config.repo}$labelStr&sort=created&order=desc&page=$currentPage&per_page=$pageSize')
+            'search/issues?q=$keyword+repo:${Config.repo}$labelStr&sort=created&order=desc&page=$currentPage&per_page=$pageSize')
         .then((Response response) => response.data['items']);
   }
 

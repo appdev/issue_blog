@@ -54,8 +54,3 @@ flutter:
     - assets/images/git.png
     - assets/images/github.png
     - assets/images/qq-group.png
-
-  fonts:
-    - family: Ionicons
-      fonts:
-        - asset: assets/fonts/Ionicons.woff2

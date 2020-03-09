@@ -81,15 +81,17 @@ class _MiragesPostTitleState extends State<MiragesPostTitle> {
   }
 
   Widget _buildTitle(BuildContext context) {
-    return Text(
-      widget.title,
-      overflow: TextOverflow.ellipsis,
-      softWrap: true,
-      textAlign: TextAlign.center,
-      style: TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.w300,
-          fontSize: UIUtil.getWidth(context) > 700 ? 40 : 28),
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Text(
+        widget.title,
+        softWrap: true,
+        textAlign: TextAlign.center,
+        style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.w300,
+            fontSize: UIUtil.getWidth(context) > 700 ? 40 : 28),
+      ),
     );
   }
 }
