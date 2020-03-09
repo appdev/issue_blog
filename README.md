@@ -1,5 +1,5 @@
 
-* 一套代码支持 Android、iOS、Web、Desktop，[点击进行预览](http://issues.bingoogolapple.cn)
+* 一套代码支持 Android、iOS、Web、Desktop，[点击进行预览](https://appdev.github.io/)
 
 
 
