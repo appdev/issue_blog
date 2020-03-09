@@ -5,5 +5,6 @@ Widget getMarkdownView(BuildContext context, String markdown) {
   return Markdown(
     data: markdown,
     shrinkWrap: true,
+    physics: NeverScrollableScrollPhysics(),
   );
 }

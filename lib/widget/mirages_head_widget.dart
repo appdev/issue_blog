@@ -49,11 +49,10 @@ class _MiragesHeadState extends State<MiragesHead> {
   Widget _buildHeadMenu() {
     return ButtonTheme(
       minWidth: 50,
-      buttonColor: Colors.white,
+      buttonColor: Colors.black38,
       child: RaisedButton(
-        color: Colors.white,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(25))),
-        onPressed: null,
+        onPressed: () => Scaffold.of(context).openDrawer(),
         child: Text(
           "MENU",
           style: TextStyle(color: Colors.white, fontSize: 13),

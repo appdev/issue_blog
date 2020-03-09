@@ -125,9 +125,12 @@ class _MiragesDrawerState extends State<MiragesDrawer> {
       Center(child: buildPageText(context, Config.BLOG, () {})),
       SizedBox(height: 15),
       Center(
-          child: buildPageText(context, "首页", () {
-        RouteUtil.routeToIndex(context, "");
-      })),
+          child: InkWell(
+              onTap: () {
+                Navigator.pop(context);
+                RouteUtil.routeToIndex(context, null);
+              },
+              child: Text("首页", style: TextStyle(fontSize: 18, color: Colors.black)))),
       SizedBox(height: 15),
       Center(child: buildPageText(context, "关于", () {})),
       SizedBox(height: 15),

@@ -9,6 +9,7 @@ import 'package:issue_blog/widget/mirages_blog_bar.dart';
 import 'package:issue_blog/widget/mirages_comment_widget.dart';
 import 'package:issue_blog/widget/mirages_foot_wodget.dart';
 import 'package:issue_blog/widget/mirages_post_title_widget.dart';
+import 'package:issue_blog/widget/mriages_drawer.dart';
 
 class WebBlogDetailMiragesPage extends StatefulWidget {
   final dynamic issue;
@@ -49,7 +50,10 @@ class _WebBlogDetailMiragesPageState extends BaseState<WebBlogDetailMiragesPage>
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-        child: Scaffold(body: MiragesBlogBar.buildBlogBar(buildBodyWidget, context)),
+        child: Scaffold(
+          body: MiragesBlogBar.buildBlogBar(buildBodyWidget, context),
+          drawer: MiragesDrawer(),
+        ),
         onWillPop: () {
           Navigator.pop(context);
           return new Future.value(false);
