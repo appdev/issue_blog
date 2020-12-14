@@ -74,7 +74,7 @@ flutter build web
 > 1.在「GitHub Pages」根目录下添加文件名为「CNAME」的文件，文件内容就是你的二级域名
 
 ```
-www.appdev.cn
+www.apkdv.com
 ```
 > 2.登录你的域名控制台添加域名解析
 
